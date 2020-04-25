@@ -1,0 +1,36 @@
+component: thiagozf-aws-dynamodb@dev
+org: thiagozf
+app: recipes
+name: db
+stage: dev
+
+inputs:
+  name: ${org}-${stage}-${app}-${name}
+  deletionPolicy: delete
+  region: us-east-1
+  replicas:
+    - RegionName: sa-east-1
+  keySchema:
+    - AttributeName: PK
+      KeyType: HASH
+    - AttributeName: SK
+      KeyType: RANGE
+  attributeDefinitions:
+    - AttributeName: PK
+      AttributeType: S
+    - AttributeName: SK
+      AttributeType: S
+    - AttributeName: GSI_SK
+      AttributeType: S
+  globalSecondaryIndexes:
+    - IndexName: GSI_1
+      KeySchema:
+        - AttributeName: SK
+          KeyType: HASH
+        - AttributeName: GSI_SK
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL
+  stream:
+    StreamEnabled: true
+    StreamViewType: NEW_AND_OLD_IMAGES
