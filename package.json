@@ -46,6 +46,7 @@
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
     "execa": "^1.0.0",
     "get-yarn-workspaces": "^1.0.2",
@@ -89,16 +90,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lint-staged && yarn test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "**/*.js": [
+    "**/*.ts": [
       "prettier --write",
       "eslint --fix",
-      "git add",
-      "jest --config jest.config.js --findRelatedTests"
+      "git add"
     ]
   },
   "yargs": {
