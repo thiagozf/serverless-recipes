@@ -1,0 +1,38 @@
+component: thiagozf-aws-cloudfront@dev
+org: thiagozf
+app: recipes
+name: distribution
+stage: dev
+
+inputs:
+  name: ${org}-${stage}-${app}-${name}
+  defaults:
+    ttl: 0
+    allowedHttpMethods:
+      - HEAD
+      - GET
+    forward:
+      cookies: all
+      queryString: true
+  origins:
+    - url: 'http://${output:${stage}:${app}:bucket.name}.s3.amazonaws.com'
+      private: true
+      pathPatterns:
+        /graphql:
+          ttl: 0
+          forward:
+            cookies: all
+            queryString: true
+            headers:
+              - Authorization
+              - Accept
+          allowedHttpMethods:
+            - HEAD
+            - DELETE
+            - GET
+            - POST
+            - OPTIONS
+            - PUT
+            - PATCH
+          lambda@edge:
+            origin-request: ${output:${stage}:${app}:graphql-api.arn}:${output:${stage}:${app}:graphql-api.version}

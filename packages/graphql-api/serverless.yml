@@ -1,0 +1,11 @@
+component: thiagozf-aws-lambda@dev
+org: thiagozf
+app: recipes
+name: graphql-api
+stage: dev
+
+inputs:
+  name: ${org}-${stage}-${app}-${name}
+  src: ./build
+  handler: index.handler
+  roleArn: ${output:${stage}:${app}:api-role.arn}

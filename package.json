@@ -1,0 +1,118 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "contributors": [
+    "Thiago Zanivan <hi+github@thiagozf.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thiagozf/serverless-recipes.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.8.3",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^24.0.24",
+    "@types/node": "^12.12.22",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "all-contributors-cli": "^6.2.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-parameter-decorator": "^1.0.16",
+    "babel-plugin-transform-typescript-metadata": "^0.3.0",
+    "chalk": "^2.4.1",
+    "commitizen": "^2.10.1",
+    "cross-env": "^5.2.0",
+    "cz-customizable": "^5.2.0",
+    "dotenv": "^5.0.1",
+    "empty": "^0.10.1",
+    "env-ci": "2.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-plugin-flowtype": "^4.5.2",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "execa": "^1.0.0",
+    "get-yarn-workspaces": "^1.0.2",
+    "git-cz": "^1.7.1",
+    "glob": "^7.1.3",
+    "globby": "^8.0.1",
+    "husky": "^4.2.3",
+    "inquirer": "^7.0.0",
+    "inquirer-autocomplete-prompt": "^1.0.1",
+    "inquirer-maxlength-input-prompt": "^1.0.0",
+    "jest": "^24.9.0",
+    "jest-extended": "^0.11.2",
+    "lerna": "3.19.0",
+    "lint-staged": "^7.2.2",
+    "load-json-file": "^6.2.0",
+    "lodash": "^4.17.11",
+    "longest": "^2.0.1",
+    "minimatch": "^3.0.4",
+    "node-fetch": "^2.6.0",
+    "prettier": "^1.14.2",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^24.2.0",
+    "typescript": "3.8.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "deploy": "lerna run deploy --scope=@serverless-recipes/*",
+    "build:packages": "lerna run build --scope=@serverless-recipes/* --stream",
+    "watch:packages": "lerna run watch --scope=@serverless-recipes/* --stream --parallel",
+    "test:packages": "lerna run test --scope=@serverless-recipes/* --stream",
+    "clear-dist": "yarn rimraf packages/*/dist",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
+    "commit": "node scripts/commitizen.js",
+    "commit:no-verify": "yarn commit --no-verify",
+    "commit:verify": "yarn lint-staged",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --config .prettierrc.js --write",
+    "validate-packages": "node scripts/validatePackages.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add",
+      "jest --config jest.config.js --findRelatedTests"
+    ]
+  },
+  "yargs": {
+    "populate--": true
+  },
+  "config": {
+    "commitizen": {
+      "cliPath": "node_modules/commitizen",
+      "path": "./scripts/cz-adapter"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}

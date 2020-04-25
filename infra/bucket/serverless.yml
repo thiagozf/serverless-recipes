@@ -1,0 +1,8 @@
+component: thiagozf-aws-s3@dev
+org: thiagozf
+app: recipes
+name: bucket
+stage: dev
+
+inputs:
+  name: ${org}-${stage}-${app}-${name}

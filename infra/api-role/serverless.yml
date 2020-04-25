@@ -1,0 +1,13 @@
+component: aws-iam-role
+org: thiagozf
+app: recipes
+name: api-role
+stage: dev
+
+inputs:
+  name: ${org}-${stage}-${app}-${name}
+  service:
+    - lambda.amazonaws.com
+    - edgelambda.amazonaws.com
+  policy:
+    arn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
