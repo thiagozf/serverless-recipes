@@ -1,6 +1,6 @@
 import { buildSchemaSync } from 'type-graphql'
 import Container from 'typedi'
-import { RecipeResolver } from './recipe.resolver'
+import { RecipeResolver } from '@serverless-recipes/recipes/adapters/recipe.graphql'
 
 const schema = buildSchemaSync({
   resolvers: [RecipeResolver],

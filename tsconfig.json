@@ -17,7 +17,12 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@serverless-recipes/*": ["packages/*/src"]
+      "@serverless-recipes/graphql-api/*": ["packages/graphql-api/src/*"],
+      "@serverless-recipes/graphql-api": ["packages/graphql-api/src"],
+      "@serverless-recipes/in-memory-repository/*": ["packages/in-memory-repository/src/*"],
+      "@serverless-recipes/in-memory-repository": ["packages/in-memory-repository/src"],
+      "@serverless-recipes/recipes/*": ["packages/recipes/src/*"],
+      "@serverless-recipes/recipes": ["packages/recipes/src"]
     }
   },
   "exclude": ["node_modules"],

@@ -1,5 +1,5 @@
 {
-  "name": "@serverless-recipes/graphql-api",
+  "name": "@serverless-recipes/recipes",
   "version": "0.0.0",
   "main": "index.js",
   "repository": {
@@ -11,11 +11,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.5.5",
-    "@serverless-recipes/recipes": "0.0.0",
-    "apollo-server-micro": "^2.12.0",
+    "@serverless-recipes/in-memory-repository": "0.0.0",
     "class-validator": "0.12.0-refactor.5",
     "reflect-metadata": "^0.1.13",
+    "rimo": "^1.2.6",
     "type-graphql": "beta",
     "typedi": "^0.8.0"
   },
@@ -24,9 +23,6 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack -p",
-    "test": "cross-env NODE_ENV=test jest",
-    "deploy": "serverless deploy",
-    "predeploy": "yarn build"
+    "test": "cross-env NODE_ENV=test jest"
   }
 }

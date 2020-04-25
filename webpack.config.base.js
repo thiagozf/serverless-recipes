@@ -1,4 +1,5 @@
 const path = require('path')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = ({ root }) => {
   return {
@@ -30,14 +31,33 @@ module.exports = ({ root }) => {
           loader: 'babel-loader',
           exclude: /node_modules/,
           options: {
-            babelrc: true
+            babelrc: true,
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    node: '10.16'
+                  }
+                }
+              ],
+              '@babel/preset-typescript'
+            ],
+            plugins: [
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              '@babel/plugin-proposal-class-properties',
+              'babel-plugin-transform-typescript-metadata',
+              'babel-plugin-parameter-decorator',
+              ['babel-plugin-lodash', { id: ['lodash'] }]
+            ]
           }
         }
       ]
     },
     resolve: {
       modules: [path.resolve(root, 'node_modules'), 'node_modules'],
-      extensions: ['.mjs', '.ts', '.js', '.json']
+      extensions: ['.mjs', '.ts', '.js', '.json'],
+      plugins: [new TsconfigPathsPlugin()]
     }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "@serverless-recipes/in-memory-repository",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thiagozf/serverless-recipes.git"
+  },
+  "contributors": [
+    "Thiago Zanivan <hi+github@thiagozf.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "rimo": "^1.2.6"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.150"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest"
+  }
+}
