@@ -157,6 +157,11 @@ const handler = (graphqlHandler) => (cloudFrontEvent) => {
 
   const responsePromise = new Promise((resolve) => {
     res.end = (text) => {
+      if (res.finished) {
+        resolve(response)
+        return
+      }
+
       if (text) res.write(text)
       res.finished = true
       response.body = gz
