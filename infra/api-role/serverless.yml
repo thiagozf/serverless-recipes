@@ -10,4 +10,6 @@ inputs:
     - lambda.amazonaws.com
     - edgelambda.amazonaws.com
   policy:
-    arn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+    arn:
+      - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+      - 'arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess'

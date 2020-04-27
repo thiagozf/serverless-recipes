@@ -1,5 +1,5 @@
 {
-  "name": "@serverless-recipes/recipes",
+  "name": "@serverless-recipes/dynamodb",
   "version": "0.0.0",
   "main": "index.js",
   "repository": {
@@ -11,14 +11,14 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@serverless-recipes/dynamodb": "0.0.0",
-    "class-validator": "0.12.0-refactor.5",
-    "reflect-metadata": "^0.1.13",
+    "aws-sdk": "^2.663.0",
     "rimo": "^1.2.6",
-    "type-graphql": "beta",
-    "typedi": "^0.8.0"
+    "typedi": "^0.8.0",
+    "type-fest": "^0.13.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/lodash": "^4.14.150"
+  },
   "publishConfig": {
     "access": "public"
   },

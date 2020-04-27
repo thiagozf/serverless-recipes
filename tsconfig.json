@@ -17,6 +17,8 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
+      "@serverless-recipes/dynamodb/*": ["packages/dynamodb/src/*"],
+      "@serverless-recipes/dynamodb": ["packages/dynamodb/src"],
       "@serverless-recipes/graphql-api/*": ["packages/graphql-api/src/*"],
       "@serverless-recipes/graphql-api": ["packages/graphql-api/src"],
       "@serverless-recipes/in-memory-repository/*": ["packages/in-memory-repository/src/*"],

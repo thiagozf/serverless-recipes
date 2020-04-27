@@ -1,5 +1,6 @@
 const path = require('path')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = ({ root }) => {
   return {
@@ -22,6 +23,11 @@ module.exports = ({ root }) => {
       // Turn off size warnings for entry points
       hints: false
     },
+    plugins: [
+      new Dotenv({
+        path: path.join(root, '.env')
+      })
+    ],
     // Run babel on all .js files and skip those in node_modules
     module: {
       exprContextCritical: false,

@@ -1,11 +1,27 @@
 import { Service } from 'typedi'
-import { InMemoryCrudRepository } from '@serverless-recipes/in-memory-repository'
+import { DynamoCrudRepository } from '@serverless-recipes/dynamodb'
 import { RecipeRepository } from '../recipe.repository'
 import { Recipe, RecipeId } from '../recipe.model'
 
 @Service('recipe.repository')
-export class RecipeInMemoryRepository extends InMemoryCrudRepository<Recipe, RecipeId>
+export class RecipeDynamoRepository extends DynamoCrudRepository<Recipe, RecipeId>
   implements RecipeRepository {
+  constructor() {
+    super(Recipe)
+  }
+
+  getPK({ id }) {
+    return `Recipe:${id.toValue()}`
+  }
+
+  getSK() {
+    return `Recipe`
+  }
+
+  getGSI_SK({ title }) {
+    return `title:${title}`
+  }
+
   async findAllRecipes(): Promise<Recipe[]> {
     return this.findAll()
   }
