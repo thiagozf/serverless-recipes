@@ -1,1 +1,1 @@
-export { RecipeInMemoryRepository } from './adapters/recipe.repository'
+import './adapters/recipe.repository'

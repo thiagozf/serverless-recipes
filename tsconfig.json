@@ -21,8 +21,8 @@
       "@serverless-recipes/dynamodb": ["packages/dynamodb/src"],
       "@serverless-recipes/graphql-api/*": ["packages/graphql-api/src/*"],
       "@serverless-recipes/graphql-api": ["packages/graphql-api/src"],
-      "@serverless-recipes/in-memory-repository/*": ["packages/in-memory-repository/src/*"],
-      "@serverless-recipes/in-memory-repository": ["packages/in-memory-repository/src"],
+      "@serverless-recipes/memorydb/*": ["packages/memorydb/src/*"],
+      "@serverless-recipes/memorydb": ["packages/memorydb/src"],
       "@serverless-recipes/recipes/*": ["packages/recipes/src/*"],
       "@serverless-recipes/recipes": ["packages/recipes/src"]
     }

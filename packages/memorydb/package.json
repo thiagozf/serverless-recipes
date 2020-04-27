@@ -1,5 +1,5 @@
 {
-  "name": "@serverless-recipes/in-memory-repository",
+  "name": "@serverless-recipes/memorydb",
   "version": "0.0.0",
   "main": "index.js",
   "repository": {
